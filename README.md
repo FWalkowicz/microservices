@@ -4,10 +4,9 @@ Naszym celem w tym projekcie jest zbadanie wydajności usług komunikacyjnych wy
 
 Pierwszym zadaniem nad którym będziemy się skupiać będzie budowa 2 [[Mikroserwisy w python|mikroserwisów w pythonie]] na odrębnych komputerach które będą komunikowały się ze sobą za pomocą adresu IP
 
->[!info] schemat ogólny
->![[Badanie wydajności usług komunikacyjnych w środowisku mikroserwisowym 2022-10-25 19.54.36.excalidraw|800]]
->
->
+
+![Schemat ogólny](https://github.com/FWalkowicz/microservices/blob/main/Badanie%20wydajno%C5%9Bci%20us%C5%82ug%20komunikacyjnych%20w%20%C5%9Brodowisku%20mikroserwisowym%202022-10-25%2019.54.36.excalidraw.png)
+
 
 ### Zadania komunikacyjne
 - Przesłanie dużej ilości małych zapytań
