@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from microservices.protos import greet_pb2 as protos_dot_greet__pb2
+from protos import greet_pb2 as protos_dot_greet__pb2
 
 
 class GreeterStub(object):
@@ -20,6 +20,11 @@ class GreeterStub(object):
                 request_serializer=protos_dot_greet__pb2.MessageRequest.SerializeToString,
                 response_deserializer=protos_dot_greet__pb2.MessageResponse.FromString,
                 )
+        self.ServerRequests = channel.unary_stream(
+                '/Greeter/ServerRequests',
+                request_serializer=protos_dot_greet__pb2.InfoRequest.SerializeToString,
+                response_deserializer=protos_dot_greet__pb2.MessageResponse.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -34,12 +39,23 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ServerRequests(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SayHello': grpc.unary_unary_rpc_method_handler(
                     servicer.SayHello,
                     request_deserializer=protos_dot_greet__pb2.MessageRequest.FromString,
+                    response_serializer=protos_dot_greet__pb2.MessageResponse.SerializeToString,
+            ),
+            'ServerRequests': grpc.unary_stream_rpc_method_handler(
+                    servicer.ServerRequests,
+                    request_deserializer=protos_dot_greet__pb2.InfoRequest.FromString,
                     response_serializer=protos_dot_greet__pb2.MessageResponse.SerializeToString,
             ),
     }
@@ -66,6 +82,23 @@ class Greeter(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Greeter/SayHello',
             protos_dot_greet__pb2.MessageRequest.SerializeToString,
+            protos_dot_greet__pb2.MessageResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ServerRequests(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/Greeter/ServerRequests',
+            protos_dot_greet__pb2.InfoRequest.SerializeToString,
             protos_dot_greet__pb2.MessageResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
