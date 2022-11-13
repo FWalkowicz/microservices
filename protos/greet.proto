@@ -1,0 +1,19 @@
+syntax="proto3";
+
+// pierwszy serwis do przywitania
+service Greeter{
+  // pozdrowienia
+  // unary service
+  rpc SayHello(MessageRequest) returns (MessageResponse) {}
+}
+
+// na wejściu będę miał imię i nazwisko
+message MessageRequest{
+  string name = 1;
+  string surname = 2;
+}
+
+// na wyjściu będę miał odpowiedz
+message MessageResponse{
+  string message = 1;
+}
