@@ -14,15 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12protos/greet.proto\"/\n\x0eMessageRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07surname\x18\x02 \x01(\t\"\"\n\x0fMessageResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2:\n\x07Greeter\x12/\n\x08SayHello\x12\x0f.MessageRequest\x1a\x10.MessageResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12protos/greet.proto\"/\n\x0eMessageRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07surname\x18\x02 \x01(\t\"\"\n\x0fMessageResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1d\n\x0bInfoRequest\x12\x0e\n\x06number\x18\x01 \x01(\x05\x32l\n\x07Greeter\x12-\n\x08SayHello\x12\x0f.MessageRequest\x1a\x10.MessageResponse\x12\x32\n\x0eServerRequests\x12\x0c.InfoRequest\x1a\x10.MessageResponse0\x01\x62\x06proto3')
 
 
 
 _MESSAGEREQUEST = DESCRIPTOR.message_types_by_name['MessageRequest']
 _MESSAGERESPONSE = DESCRIPTOR.message_types_by_name['MessageResponse']
+_INFOREQUEST = DESCRIPTOR.message_types_by_name['InfoRequest']
 MessageRequest = _reflection.GeneratedProtocolMessageType('MessageRequest', (_message.Message,), {
-  'DESCRIPTOR': _MESSAGEREQUEST,
-  '__module__': 'protos.greet_pb2'
+  'DESCRIPTOR' : _MESSAGEREQUEST,
+  '__module__' : 'protos.greet_pb2'
   # @@protoc_insertion_point(class_scope:MessageRequest)
   })
 _sym_db.RegisterMessage(MessageRequest)
@@ -34,6 +35,13 @@ MessageResponse = _reflection.GeneratedProtocolMessageType('MessageResponse', (_
   })
 _sym_db.RegisterMessage(MessageResponse)
 
+InfoRequest = _reflection.GeneratedProtocolMessageType('InfoRequest', (_message.Message,), {
+  'DESCRIPTOR' : _INFOREQUEST,
+  '__module__' : 'protos.greet_pb2'
+  # @@protoc_insertion_point(class_scope:InfoRequest)
+  })
+_sym_db.RegisterMessage(InfoRequest)
+
 _GREETER = DESCRIPTOR.services_by_name['Greeter']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -42,6 +50,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _MESSAGEREQUEST._serialized_end=69
   _MESSAGERESPONSE._serialized_start=71
   _MESSAGERESPONSE._serialized_end=105
-  _GREETER._serialized_start=107
-  _GREETER._serialized_end=165
+  _INFOREQUEST._serialized_start=107
+  _INFOREQUEST._serialized_end=136
+  _GREETER._serialized_start=138
+  _GREETER._serialized_end=246
 # @@protoc_insertion_point(module_scope)
